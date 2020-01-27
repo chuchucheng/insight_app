@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 
 # import the function to process input
-from get_letters import get_letters
+from predict_pop import result
 
 app = Flask(__name__)
 
@@ -13,13 +13,15 @@ def index():
         # get url that the user has entered
         try:
             word = request.form['word']
-            letters = get_letters(word)
+            
+            discount = request.form['discount']
+            letters = result(word,discount)
         except:
             errors.append(
-                "Unable to get URL. Please make sure it's valid and try again."
+                "Unable to get URL. Please make sure it's valid and try again." + str(word) + str(discount) + str(letters)
             )
     return render_template('index.html', letters=letters, errors=errors)
 	
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

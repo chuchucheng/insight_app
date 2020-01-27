@@ -5,10 +5,12 @@
   </head>
   <body>
     <div class="container">
-      <h1>Yourname Insight App</h1>
+      <h1>Smart Shopper - How popular is this deal?</h1>
       <form role="form" method='POST' action='/'>
         <div class="form-group">
-          <input type="text" name="word" placeholder="Enter word" style="max-width: 300px;" autofocus required>
+          <input type="text" name="word" placeholder="Enter url of the deal" style="max-width: 800px;" autofocus required>
+		  <input type="text" name="discount" placeholder="discount" style="max-width: 800px;" autofocus required>
+
         </div>
         <button type="submit">Submit</button>
       </form>
@@ -19,13 +21,12 @@
     </div>
     <div>
         {% if letters %}
-            <h2>Letters Of Your Word</h2>
+            <h2>Prediction </h2>
             <br>
             <div id="results">
                 <ol>
-                {% for letter in letters %}
-                    <li>{{ letter }}</li>
-                {% endfor %}
+                    <p>About {{ letters }} people are going to like this deal.</p>
+					<p>For skin care products, this deal is more popular than 58% of the others.</p>
               </table>
             </div>
         {% endif %}
