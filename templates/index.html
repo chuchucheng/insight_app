@@ -1,35 +1,127 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Yourname Insight App</title>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Smart Shopper - How popular is this deal?</h1>
-      <form role="form" method='POST' action='/'>
-        <div class="form-group">
-          <input type="text" name="word" placeholder="Enter url of the deal" style="max-width: 800px;" autofocus required>
-		  <input type="text" name="discount" placeholder="discount" style="max-width: 800px;" autofocus required>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    
+    <title>Smart Shopper </title>
+    
+    <link href="../static/css/bootstrap.css" rel="stylesheet" />
+	<link href="../static/css/coming-sssoon.css" rel="stylesheet" />    
+    
+    <!--     Fonts     -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+  
+</head>
 
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-      <br>
-      {% for error in errors %}
-        <h4>{{ error }}</h4>
-      {% endfor %}
+<body>
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
     </div>
-    <div>
-        {% if letters %}
-            <h2>Prediction </h2>
+
+   
+
+         <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+                <img src="../static/images/flags/US.png"/>
+                English(US) 
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><img src="../static/images/flags/DE.png"/> Deutsch</a></li>
+                <li><a href="#"><img src="../static/images/flags/GB.png"/> English(UK)</a></li>
+                <li><a href="#"><img src="../static/images/flags/FR.png"/> Français</a></li>
+                <li><a href="#"><img src="../static/images/flags/RO.png"/> Română</a></li>
+                <li><a href="#"><img src="../static/images/flags/IT.png"/> Italiano</a></li>
+                
+                <li class="divider"></li>
+                <li><a href="#"><img src="../static/images/flags/ES.png"/> Español <span class="label label-default">soon</span></a></li>
+                <li><a href="#"><img src="../static/images/flags/BR.png"/> Português <span class="label label-default">soon</span></a></li>
+                <li><a href="#"><img src="../static/images/flags/JP.png"/> 日本語 <span class="label label-default">soon</span></a></li>
+                <li><a href="#"><img src="../static/images/flags/TR.png"/> Türkçe <span class="label label-default">soon</span></a></li>
+             
+              </ul>
+        </li>
+
+      </ul>
+      
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container -->
+</nav>
+<div class="main" style="background-image: url('../static/images/bg.jpg')">
+
+<!--    Change the image source '/images/restaurant.jpg')" with your favourite image.     -->
+    
+   <!-- <div class="cover black" data-color="black"></div> -->
+     
+<!--   You can change the black color for the filter with those colors: blue, green, red, orange       -->
+
+    <div class="container">
+     <!--   <h1 class="logo">
+            Smart Shopper
+        </h1> -->
+<!--  H1 can have 2 designs: "logo" and "logo cursive"           -->
+        
+        <div class="content">
+           							 <h4 class="motto"></h4>
+
+            <div class="subscribe">
+                <h3 class="info-text">
+				How popular is this deal?
+                   
+                </h3>
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4 col-sm6-6 col-sm-offset-3 ">
+                        <form class="form-inline" role="form" method='POST' action='/'>
+                          <div class="form-group">
+                            <label class="sr-only" for="exampleInputEmail2">deal url</label>
+							<input type="text" name="url" class="form-control transparent" placeholder="Enter url of the deal here...">
+
+							
+                          </div>
+                          <button type="submit" class="btn btn-warning btn-fill">Popular?</button>
+                        </form>
+						<br>
+                        {% for error in errors %}
+							<h4>{{ error }}</h4>
+						{% endfor %}
+                    </div>
+					<div>
+        {% if result1 %}
             <br>
-            <div id="results">
+            <div class="motto">
                 <ol>
-                    <p>About {{ letters }} people are going to like this deal.</p>
-					<p>For skin care products, this deal is more popular than 58% of the others.</p>
+                    <p>About <font size="20">{{ result1 }}</font> people are going to like this deal.</p>
+					<p>For skin care products, this deal is more popular than <font size="20">{{ result2 }}%</font> of the others.</p>
               </table>
             </div>
         {% endif %}
     </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+      <div class="container">
+            Beta Version. Only available for skin care posts on dealmoon.com/en. 
+		</div>
+    </div>
+ </div>
+
 </body>
+    <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	
 </html>

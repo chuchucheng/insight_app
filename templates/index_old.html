@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Yourname Insight App</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Smart Shopper - How popular is this deal?</h1>
+      <form role="form" method='POST' action='/'>
+        <div class="form-group">
+          <input type="text" name="url" placeholder="Enter url of the deal" style="max-width: 800px;" autofocus required>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+      <br>
+      {% for error in errors %}
+        <h4>{{ error }}</h4>
+      {% endfor %}
+    </div>
+    <div>
+        {% if result1 %}
+            <h2>Prediction </h2>
+            <br>
+            <div id="results">
+                <ol>
+                    <p>About {{ result1 }} people are going to like this deal.</p>
+					<p>For skin care products, this deal is more popular than {{ result2 }} % of the others.</p>
+              </table>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

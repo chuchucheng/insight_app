@@ -1,26 +1,25 @@
 from flask import Flask, render_template, request
 
 # import the function to process input
-from predict_pop import result
+from scrape import predpct
 
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     errors = []
-    letters = []
+    result = [0,0]
     if request.method == "POST":
         # get url that the user has entered
         try:
-            word = request.form['word']
-            
-            discount = request.form['discount']
-            letters = result(word,discount)
-        except:
+            url = request.form['url']
+
+            result = predpct(str(url))
+        except Exception as e:
             errors.append(
-                "Unable to get URL. Please make sure it's valid and try again." + str(word) + str(discount) + str(letters)
+                "Unable to get URL. Please make sure it's valid and try again."  + str(url) + "; error is " + str(e) 
             )
-    return render_template('index.html', letters=letters, errors=errors)
+    return render_template('index.html', result1 = result[0], result2 = result[1], errors=errors)
 	
 
 if __name__ == '__main__':
